@@ -30,11 +30,10 @@ describe('movie reducer tests', () => {
     })
 
     it('should handle RESET_MOVIE_SELECTED', () => {
-        expect(movieReducer(MOVIE_INITIAL_STATE, {
-          type:  MOVIE_ACTION_TYPES.RESET_MOVIE_SELECTED,
-          payload: 'abc'
-        })).toEqual(state) 
-    })
+      expect(movieReducer(undefined, {
+        type:  MOVIE_ACTION_TYPES.RESET_MOVIE_SELECTED,
+      })).toEqual({...state, results: null}) 
+  })
 })
 
 describe('characters reducer tests', () => {
@@ -46,7 +45,7 @@ describe('characters reducer tests', () => {
     it('should handle FETCH_CHARACTERS_START', () => {
         expect(charactersReducer(MOVIE_INITIAL_STATE, {
           type:  CHARACTERS_ACTION_TYPES.FETCH_CHARACTERS_START,
-        })).toEqual({...state, isLoading: true}) 
+        })).toEqual({...state, isLoading: true, results: null}) 
     })
 
     it('should handle FETCH_CHARACTERS_SUCCESS', () => {
@@ -60,6 +59,6 @@ describe('characters reducer tests', () => {
         expect(charactersReducer(MOVIE_INITIAL_STATE, {
           type:  CHARACTERS_ACTION_TYPES.FETCH_CHARACTERS_FAILED,
           payload: 'abc'
-        })).toEqual({...state, error: "abc"}) 
+        })).toEqual({...state, error: "abc", results: null}) 
     })
 })

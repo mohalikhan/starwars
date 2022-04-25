@@ -15,10 +15,6 @@ export const fetchMovieSuccess = (results) =>
 export const fetchMovieFailure = (error) =>
   createAction(MOVIE_ACTION_TYPES.FETCH_MOVIE_FAILED, error);
 
-export const resetMovieSelected = () => {
-  createAction(MOVIE_ACTION_TYPES.RESET_MOVIE_SELECTED, null);
-}
-
 export const fetchMovieStartAsync = (url) => {
   return async (dispatch) => {
     dispatch(fetchMovieStart());
@@ -33,6 +29,6 @@ export const fetchMovieStartAsync = (url) => {
 
 export const resetMovieSelectedAsync = () => {
   return async (dispatch) => {
-    dispatch(resetMovieSelected());
+    dispatch({ type: MOVIE_ACTION_TYPES.RESET_MOVIE_SELECTED });
   }
 }

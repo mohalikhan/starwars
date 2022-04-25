@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Box from '@mui/material/Box';
 
+import { fetchMovieStartAsync } from '../../store/movie/movie.actions';
 import { Movie } from './Movie'
 
 const boxStyles = {
@@ -17,9 +19,11 @@ const boxStyles = {
   
 
 export function Movies({movies}) {
+    const dispatch = useDispatch();
     const [movie, setMovie] = useState();
 
     const handleListItemClick = (event, movie) => {
+        dispatch(fetchMovieStartAsync(movie));
         setMovie(movie);
     };
 
@@ -43,10 +47,7 @@ export function Movies({movies}) {
               </Box>
         : <div/> 
         }
-        {(movie !== undefined) 
-            ? <Movie movieurl={movie}/>
-            : <div />
-        }
+        {movie ? <Movie/> : <div />}
         </>
     );
 }

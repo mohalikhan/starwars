@@ -1,7 +1,7 @@
 import { CHARACTERS_ACTION_TYPES } from './characters.types';
 
 export const CHARACTERS_INITIAL_STATE = {
-  results: {},
+  results: [],
   isLoading: false,
   error: null,
 };

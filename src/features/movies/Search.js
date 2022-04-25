@@ -11,6 +11,7 @@ import Grid from '@mui/material/Grid';
 
 import { Movies } from './Movies'
 import { fetchCharactersStartAsync } from '../../store/characters/characters.actions';
+import { resetMovieSelectedAsync } from '../../store/movie/movie.actions';
 import { selectCharactersMap, selectIsLoading } from '../../store/characters/characters.selector'
 
 export function Search() {
@@ -28,6 +29,7 @@ export function Search() {
     const handleChange = (event) => {
         const name = event.target.value;
         const films = charactersMap.filter(character => character.name === name)[0].films
+        dispatch(resetMovieSelectedAsync());
         setCharacter(name);
         setFilms(films);
     };
